@@ -10,7 +10,7 @@ detect_package_manager() {
     if command_exists apt-get; then
         echo "Detected package manager: APT (Debian, Ubuntu, etc.)"
         sudo apt-get update
-        sudo apt-get install -y python3 python3-pip python3-venv git npm curl xterm python
+        sudo apt-get install -y python3 python3-pip python3-venv git npm curl xterm python libxcb-cursor-dev
     elif command_exists dnf; then
         echo "Detected package manager: DNF (Fedora)"
         sudo dnf check-update
