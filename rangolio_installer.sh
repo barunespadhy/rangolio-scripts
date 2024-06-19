@@ -10,19 +10,19 @@ detect_package_manager() {
     if command_exists apt-get; then
         echo "Detected package manager: APT (Debian, Ubuntu, etc.)"
         sudo apt-get update
-        sudo apt-get install -y python3 python3-pip git npm curl xterm
+        sudo apt-get install -y python3 python3-pip python3-venv git npm curl xterm python
     elif command_exists dnf; then
         echo "Detected package manager: DNF (Fedora)"
         sudo dnf check-update
-        sudo dnf install -y python3 python3-pip git npm curl xterm
+        sudo dnf install -y python3 python3-pip python3-venv git npm curl xterm
     elif command_exists zypper; then
         echo "Detected package manager: Zypper (openSUSE)"
         sudo zypper refresh
-        sudo zypper install -y python3 python3-pip git npm curl xterm
+        sudo zypper install -y python3 python3-pip python3-venv git npm curl xterm
     elif command_exists pacman; then
         echo "Detected package manager: Pacman (Arch)"
         sudo pacman -Syu
-        sudo pacman -S --noconfirm python python-pip git npm curl xterm
+        sudo pacman -S --noconfirm python python-pip python-venv git npm curl xterm
     else
         echo "Package manager not detected. Unsupported OS or package manager."
         exit 1
