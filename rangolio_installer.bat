@@ -26,15 +26,14 @@ cd rangolio
 
 REM Navigate to the editable-ui folder and install npm dependencies
 echo Installing npm dependencies for editable-ui...
-powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\editable-ui;npm install"' -Wait"
-powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\editable-ui;npm run build"' -Wait"
-
+powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\editable-ui;npm install\"' -Wait"
+powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\editable-ui;npm run build\"' -Wait"
 
 REM Navigate to the viewable-ui folder and install npm dependencies
 echo Installing npm dependencies for viewable-ui...
-powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\viewable-ui;npm install"' -Wait"
-powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\viewable-ui;npm run build:ghpages"' -Wait"
-powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\viewable-ui;npm run build:server"' -Wait"
+powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\viewable-ui;npm install\"' -Wait"
+powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\viewable-ui;npm run build:ghpages\"' -Wait"
+powershell -Command "Start-Process powershell -ArgumentList ' -NoProfile -ExecutionPolicy Bypass -Command \"cd frontend\viewable-ui;npm run build:server\"' -Wait"
 
 REM Navigate to the backend folder
 echo Setting up the backend...
@@ -54,11 +53,11 @@ python manage.py migrate
 
 REM Create a desktop shortcut for managing content
 echo Creating desktop shortcut...
-powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:USERPROFILE + '\Desktop\Rangolio - Manage content.lnk'); $s.TargetPath = 'cmd.exe'; $s.Arguments = '/k cd /d %CD% & .env\Scripts\activate.bat & python manage.py runserver & start https://127.0.0.1:8000/'; $s.IconLocation = 'python.exe,0'; $s.Save()"
+powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:USERPROFILE + '\Desktop\Rangolio - Manage content.lnk'); $s.TargetPath = 'cmd.exe'; $s.Arguments = '/k cd /d %CD% & .env\Scripts\activate.bat & python manage.py runserver & start https://127.0.0.1:8000/'; $s.IconLocation = '%CD%\rangolio\backend\icons\128x128\icon.ico'; $s.Save()"
 
 REM Create a start menu entry for managing content
 echo Creating start menu entry...
-powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:APPDATA + '\Microsoft\Windows\Start Menu\Programs\Rangolio - Manage content.lnk'); $s.TargetPath = 'cmd.exe'; $s.Arguments = '/k cd /d %CD% & .env\Scripts\activate.bat & python manage.py runserver & start https://127.0.0.1:8000/'; $s.IconLocation = 'python.exe,0'; $s.Save()"
+powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:APPDATA + '\Microsoft\Windows\Start Menu\Programs\Rangolio - Manage content.lnk'); $s.TargetPath = 'cmd.exe'; $s.Arguments = '/k cd /d %CD% & .env\Scripts\activate.bat & python manage.py runserver & start https://127.0.0.1:8000/'; $s.IconLocation = '%CD%\rangolio\backend\icons\256x256.png'; $s.Save()"
 
 echo Installation completed successfully.
 
