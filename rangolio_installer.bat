@@ -53,11 +53,11 @@ python manage.py migrate
 
 REM Create a desktop shortcut for managing content
 echo Creating desktop shortcut...
-powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:USERPROFILE + '\Desktop\Rangolio - Manage content.lnk'); $s.TargetPath = 'cmd.exe'; $s.Arguments = '/k cd /d %CD% & .env\Scripts\activate.bat & python manage.py runserver & start https://127.0.0.1:8000/'; $s.IconLocation = '%CD%\rangolio\backend\icons\128x128\icon.ico'; $s.Save()"
+powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:USERPROFILE + '\Desktop\Rangolio - Manage content.lnk'); $s.TargetPath = 'powershell.exe'; $s.Arguments = '-NoProfile -ExecutionPolicy Bypass -Command \"cd ''%CD%''; .env\\Scripts\\activate; python manage.py runserver; Start-Process http://127.0.0.1:8000/\"'; $s.IconLocation = '%CD%\icons\256x256.png'; $s.Save()"
 
 REM Create a start menu entry for managing content
 echo Creating start menu entry...
-powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:APPDATA + '\Microsoft\Windows\Start Menu\Programs\Rangolio - Manage content.lnk'); $s.TargetPath = 'cmd.exe'; $s.Arguments = '/k cd /d %CD% & .env\Scripts\activate.bat & python manage.py runserver & start https://127.0.0.1:8000/'; $s.IconLocation = '%CD%\rangolio\backend\icons\256x256.png'; $s.Save()"
+powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut($env:APPDATA + '\Microsoft\Windows\Start Menu\Programs\Rangolio - Manage content.lnk'); $s.TargetPath = 'powershell.exe'; $s.Arguments = '-NoProfile -ExecutionPolicy Bypass -Command \"cd ''%CD%''; .env\\Scripts\\activate; python manage.py runserver; Start-Process http://127.0.0.1:8000/\"'; $s.IconLocation = '%CD%\icons\256x256.png'; $s.Save()"
 
 echo Installation completed successfully.
 
