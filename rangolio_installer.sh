@@ -81,7 +81,7 @@ create_desktop_entry() {
   DESKTOP_ENTRY="[Desktop Entry]
   Name=Rangolio Manage Content
   Exec=$PWD/start_editor.sh
-  Icon=$PWD/icons/256x256.png
+  Icon=$PWD/icons/png/256x256.png
   Type=Application
   Terminal=false
   Categories=Development;"
