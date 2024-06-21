@@ -14,7 +14,7 @@ detect_package_manager() {
     elif command_exists dnf; then
         echo "Detected package manager: DNF (Fedora)"
         sudo dnf check-update
-        sudo dnf install -y python3 python3-pip python3-venv git npm curl xterm
+        sudo dnf install -y python3 python3-pip git npm curl xterm
     elif command_exists zypper; then
         echo "Detected package manager: Zypper (openSUSE)"
         sudo zypper refresh
