@@ -18,7 +18,7 @@ detect_package_manager() {
     elif command_exists zypper; then
         echo "Detected package manager: Zypper (openSUSE)"
         sudo zypper refresh
-        sudo zypper install -y python3 python3-pip git npm curl xterm
+        sudo zypper install -y python3 python3-pip git npm curl xterm libgthread-2_0-0
     elif command_exists pacman; then
         echo "Detected package manager: Pacman (Arch)"
         sudo pacman -Syu
